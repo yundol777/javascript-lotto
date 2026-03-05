@@ -31,9 +31,9 @@ class Purchase {
     }
   }
 
-  // buyLottos() {
-  // return this.#money / LOTTO_COST;
-  // }
+  getLottoCount() {
+    return this.#money / LOTTO_COST;
+  }
 }
 
 export default Purchase;
