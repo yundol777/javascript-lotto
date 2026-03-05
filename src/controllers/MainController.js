@@ -7,19 +7,6 @@ import LottoResult from "../models/LottoResult.js";
 
 class MainController {
   async run() {
-    do {
-      await this.main();
-    } while (await this.askRetry());
-  }
-
-  async askRetry() {
-    const answer = await MissionUtils.Console.readLineAsync(
-      "> 다시 시작하시겠습니까? (y/n) ",
-    );
-    return answer.toLowerCase() === "y";
-  }
-
-  async main() {
     //1. 구입 금액 입력 받기
     const purchaseInput =
       await InputView.readStringWithMsg("> 구입금액을 입력해 주세요.");
