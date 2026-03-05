@@ -20,6 +20,7 @@ const OutputView = {
 
   //   Console.print(OUTPUT_MESSAGE.PROFIT_RATE(formattedProfitRate));
   // },
+
   // printWinningInfo(resultData) {
   //   resultData.forEach((rank) => {
   //     const { matchCount, money, requireBonus, count } = rank;

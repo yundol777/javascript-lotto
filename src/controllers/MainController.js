@@ -5,6 +5,7 @@ import LottoMachine from "../services/LottoMachine.js";
 import OutputView from "../views/OutputView.js";
 import WinningLotto from "../models/WinningLotto.js";
 import { INPUT_MESSAGE } from "../constants/message.js";
+import LottoResult from "../services/LottoResult.js";
 
 class MainController {
   async run() {
@@ -25,20 +26,23 @@ class MainController {
     OutputView.printPurchasedLottos(lottoCount, lottoBundle);
 
     //3. 당첨 번호 입력 받기
-    const winningLotto = new WinningLotto();
 
     const winningLottosInput = await InputView.readStringWithMsg(
       INPUT_MESSAGE.WINNING_NUMBERS,
     );
     //당첨 번호 검증 및 설정
-    winningLotto.setWinningNumbers(winningLottosInput);
+    const winningLotto = new WinningLotto(winningLottosInput);
 
     //4. 보너스 번호 입력 받기
     const bonusNumberInput = await InputView.readStringWithMsg(
       INPUT_MESSAGE.BONUS_NUMBER,
     );
     //보너스 번호 검증 및 설정
-    lottoResult.setBonusNumber(bonusNumberInput);
+    winningLotto.setBonusNumber(bonusNumberInput);
+
+    const lottoResult = new LottoResult(winningLotto, lottoBundle);
+
+    console.log(lottoResult.getResult());
 
     //5. 당첨 통계 출력 (당첨 계산)
 

@@ -1,5 +1,8 @@
 import { Console } from "@woowacourse/mission-utils";
+import { INPUT_MESSAGE } from "./constants/message.js";
+
 import MainController from "./controllers/MainController.js";
+import { RETRY_ANSWER } from "./constants/config.js";
 
 class App {
   #mainController;
@@ -15,10 +18,9 @@ class App {
   }
 
   async askRetry() {
-    const answer = await Console.readLineAsync(
-      "> 다시 시작하시겠습니까? (y/n) ",
-    );
-    return answer.toLowerCase() === "y";
+    const answer = await Console.readLineAsync(INPUT_MESSAGE.RETRY);
+    //todo: n말고 다른 게 입력되면 다시 입력받도록 구현
+    return answer === RETRY_ANSWER.YES;
   }
 }
 
