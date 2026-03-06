@@ -1,4 +1,5 @@
 import { LOTTO_COUNT } from "../constants/config.js";
+import { ERROR_MESSAGE } from "../constants/message.js";
 import { commonValidate } from "../validates/CommonValidator.js";
 import { isArrayInLength, isArrayUnique } from "../validates/LottoValidator.js";
 
@@ -13,15 +14,15 @@ class Lotto {
 
   #validate(numbers) {
     if (!numbers.every((number) => commonValidate(number))) {
-      throw new Error("[Error]");
+      throw new Error(ERROR_MESSAGE.LOTTO.INVALID_NUMBER);
     }
 
     if (!isArrayInLength(numbers, LOTTO_COUNT)) {
-      throw new Error("[Error]");
+      throw new Error(ERROR_MESSAGE.LOTTO.INVALID_LENGTH);
     }
 
     if (!isArrayUnique(numbers)) {
-      throw new Error("[Error] 중복");
+      throw new Error(ERROR_MESSAGE.LOTTO.DUPLICATE);
     }
   }
 
