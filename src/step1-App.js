@@ -1,8 +1,10 @@
-import { Console } from "@woowacourse/mission-utils";
 import { INPUT_MESSAGE } from "./constants/message.js";
+import { isRetryAnswerValid } from "./validates/RetryAnswerValidator.js";
 
 import MainController from "./controllers/MainController.js";
-import { RETRY_ANSWER } from "./constants/config.js";
+
+import OutputView from "./views/OutputView.js";
+import InputView from "./views/InputView.js";
 
 class App {
   #mainController;
@@ -14,13 +16,23 @@ class App {
   async run() {
     do {
       await this.#mainController.run();
-    } while (await this.askRetry());
+    } while (await this.#askRetry());
   }
 
-  async askRetry() {
-    const answer = await Console.readLineAsync(INPUT_MESSAGE.RETRY);
-    //todo: n말고 다른 게 입력되면 다시 입력받도록 구현
-    return answer === RETRY_ANSWER.YES;
+  async #askRetry() {
+    const isAnswerValid = await this.#readRetryAnswer();
+    return isAnswerValid;
+  }
+
+  async #readRetryAnswer() {
+    try {
+      const answerInput = await InputView.readStringWithMsg(INPUT_MESSAGE.RETRY);
+
+      return isRetryAnswerValid(answerInput);
+    } catch (error) {
+      OutputView.printMessage(error.message);
+      return await this.#readRetryAnswer();
+    }
   }
 }
 
