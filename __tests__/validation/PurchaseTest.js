@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from "../../src/constants/message.js";
 import Purchase from "../../src/models/Purchase.js";
 
 describe("구매 금액 입력에 적용되는 검증", () => {
@@ -7,7 +8,7 @@ describe("구매 금액 입력에 적용되는 검증", () => {
 
     expect(() => {
       new Purchase(INPUT);
-    }).toThrow("[ERROR]");
+    }).toThrow(ERROR_MESSAGE.COMMON.INVALID_NUMBER);
   });
 
   // input: a, -1, 0.1
@@ -16,7 +17,7 @@ describe("구매 금액 입력에 적용되는 검증", () => {
 
     expect(() => {
       new Purchase(INPUT);
-    }).toThrow("[ERROR]");
+    }).toThrow(ERROR_MESSAGE.COMMON.INVALID_NUMBER);
   });
 
   // input: 500, 2001
@@ -25,7 +26,7 @@ describe("구매 금액 입력에 적용되는 검증", () => {
 
     expect(() => {
       new Purchase(INPUT);
-    }).toThrow("[ERROR]");
+    }).toThrow(ERROR_MESSAGE.PURCHASE.INVALID_UNIT);
   });
 
   // input: 99999999999999999999999999
@@ -34,6 +35,6 @@ describe("구매 금액 입력에 적용되는 검증", () => {
 
     expect(() => {
       new Purchase(INPUT);
-    }).toThrow("[ERROR]");
+    }).toThrow(ERROR_MESSAGE.PURCHASE.TOO_LARGE);
   });
 });
