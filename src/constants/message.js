@@ -32,6 +32,7 @@ export const OUTPUT_MESSAGE = {
 
   WINNING_STATISTICS_HEADER: "\n당첨 통계\n--------------------",
   WINNING_MATCH_COUNT_INFO: (matchCount) => `${matchCount}개 일치`,
+  IS_BONUS_NUMBER_MATCH: `, 보너스 볼 일치`,
   WINNING_PRIZE_MONEY: (money) => `(${money}원)`,
   PROFIT_RATE: (profitRate) => `총 수익률은 ${profitRate}%입니다.`,
 };

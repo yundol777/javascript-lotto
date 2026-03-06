@@ -26,7 +26,7 @@ const OutputView = {
       const { matchCount, money, requireBonus, count } = rank;
 
       let matchMessage = OUTPUT_MESSAGE.WINNING_MATCH_COUNT_INFO(matchCount);
-      if (requireBonus) matchMessage += ", 보너스 볼 일치";
+      if (requireBonus) matchMessage += OUTPUT_MESSAGE.IS_BONUS_NUMBER_MATCH;
 
       const formattedMoney = formatNumber(money);
       const prizeMessage = OUTPUT_MESSAGE.WINNING_PRIZE_MONEY(formattedMoney);
