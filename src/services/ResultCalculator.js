@@ -1,7 +1,6 @@
 import { LOTTO_RANK } from "../constants/config.js";
 
-// 파일 위치 고민... util? service?
-export function resultAggregator(results) {
+export function resultCalculator(results) {
   const resultData = Object.values(LOTTO_RANK).map((rank) => ({
     ...rank,
     count: 0,

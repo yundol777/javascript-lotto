@@ -1,15 +1,15 @@
 import { LOTTO_COUNT } from "../constants/config.js";
 import { ERROR_MESSAGE } from "../constants/message.js";
+
 import { commonValidate } from "../validates/CommonValidator.js";
 import { isArrayInLength, isArrayUnique } from "../validates/LottoValidator.js";
 
 class Lotto {
   #numbers;
 
-  //numbers type: 배열
-  constructor(numbers) {
-    this.#validate(numbers);
-    this.#numbers = numbers.sort((a, b) => a - b);
+  constructor(numbersInput) {
+    this.#validate(numbersInput);
+    this.#numbers = numbersInput.sort((a, b) => a - b);
   }
 
   #validate(numbers) {

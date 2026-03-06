@@ -1,15 +1,15 @@
 import { LOTTO_COST } from "../constants/config.js";
 import { ERROR_MESSAGE } from "../constants/message.js";
-import { isInputEmpty, isPositiveInteger } from "../validates/CommonValidator.js";
 
+import { isInputEmpty, isPositiveInteger } from "../validates/CommonValidator.js";
 import { isValidUnit, isTooLarge } from "../validates/PurchaseValidator.js";
 
 class Purchase {
   #money;
 
-  constructor(input) {
-    this.#validate(input);
-    this.#money = Number(input);
+  constructor(moneyInput) {
+    this.#validate(moneyInput);
+    this.#money = Number(moneyInput);
   }
 
   #validate(input) {

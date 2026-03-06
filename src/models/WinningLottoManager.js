@@ -1,16 +1,19 @@
-import { ERROR_MESSAGE } from "../constants/message.js";
-import { commonValidate } from "../validates/CommonValidator.js";
-import { isNumberInArray } from "../validates/LottoValidator.js";
 import Lotto from "./Lotto.js";
 
+import { ERROR_MESSAGE } from "../constants/message.js";
+
+import { commonValidate } from "../validates/CommonValidator.js";
+import { isNumberInArray } from "../validates/LottoValidator.js";
+
 class WinningLottoManager extends Lotto {
-  #winningNumbers;
+  #winningLottos;
   #bonusNumber;
 
-  constructor(winningNumbersInput) {
-    const parsedWinningNumbers = winningNumbersInput.split(",").map(Number);
-    super(parsedWinningNumbers);
-    this.#winningNumbers = parsedWinningNumbers;
+  constructor(winningLottosInput) {
+    const parsedWinningLottos = winningLottosInput.split(",").map(Number);
+
+    super(parsedWinningLottos);
+    this.#winningLottos = parsedWinningLottos;
   }
 
   setBonusNumber(bonusNumberInput) {
@@ -23,14 +26,14 @@ class WinningLottoManager extends Lotto {
       throw new Error(ERROR_MESSAGE.COMMON.INVALID_NUMBER);
     }
 
-    if (isNumberInArray(Number(bonusNumber), this.#winningNumbers)) {
+    if (isNumberInArray(Number(bonusNumber), this.#winningLottos)) {
       throw new Error(ERROR_MESSAGE.BONUS.DUPLICATE);
     }
   }
 
   compareWithWinningLotto(lottoNumbers) {
-    const winningNumbers = this.#winningNumbers;
-    const matchCount = winningNumbers.filter((number) => lottoNumbers.includes(number)).length;
+    const winningLottos = this.#winningLottos;
+    const matchCount = winningLottos.filter((number) => lottoNumbers.includes(number)).length;
     const hasBonus = lottoNumbers.includes(this.#bonusNumber);
 
     return {

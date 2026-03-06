@@ -12,30 +12,29 @@ import LottoResult from "../services/LottoResult.js";
 
 class MainController {
   async run() {
-    //1. 구입 금액 입력 받기
+    //1. 구입 금액 입력 받기 ==============================
     const purchase = await this.#readPurchaseMoney();
-
     //1-1. 로또 티켓 갯수 가져오기
     const lottoTicketCount = purchase.getLottoTicketCount();
-
     //1-2. 로또 머신 인스턴스 생성 및 로또 티켓 가져오기
     const lottoMachine = new LottoMachine(lottoTicketCount);
     const lottoTickets = lottoMachine.getLottoTickets();
 
-    //2. 로또 티켓 구입 갯수와 구입한 로또 티켓 출력
+    //2. 로또 티켓 구입 갯수와 구입한 로또 티켓 출력 ==============================
     OutputView.printPurchasedLottoTickets(lottoTicketCount, lottoTickets);
 
-    //3. 당첨 번호 입력 받기
+    //3. 당첨 번호 입력 받기 ==============================
     const winningLottoManager = await this.#readWinningLotto();
 
-    //4. 보너스 번호 입력 받기
+    //4. 보너스 번호 입력 받기 ==============================
     await this.#readAndSetBonusNumber(winningLottoManager);
 
+    // 5. 로또 결과 인스턴스 생성 ==============================
     const lottoResult = new LottoResult(winningLottoManager, lottoTickets);
-    // purchaseInput을 사용하기에는 검증이 안됨. money를 그대로 get 하는 것도 조금 애매해서 그냥 개수로 넘김.
+    // 5-1. 가공된 로또 결과를 가져오기
     const { resultData, profitRate } = lottoResult.getResult(lottoTicketCount);
 
-    //5. 당첨 통계 및 수익률 출력 (당첨 계산)
+    //6. 당첨 통계 및 수익률 출력 ==============================
     OutputView.printResult(resultData, profitRate);
   }
 
