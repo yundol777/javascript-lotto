@@ -8,7 +8,7 @@ class LottoMachine {
     this.#generatedLottos = this.#generateLottos(lottoCount);
   }
 
-  getLottos() {
+  getLottoTickets() {
     const lottos = this.#generatedLottos.map((lotto) => {
       return lotto.getNumbers();
     });
