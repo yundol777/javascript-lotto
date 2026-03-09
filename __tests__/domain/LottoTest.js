@@ -1,5 +1,5 @@
 import Lotto from "../../src/models/Lotto.js";
-import { resultCalculator } from "../../src/services/resultCalculator.js";
+import { resultCalculator } from "../../src/services/ResultCalculator.js";
 
 const AGGREGATION_TEST_CASES = [
   { desc: "6개 번호 일치 1등", result: { matchCount: 6, hasBonus: false }, expectedIndex: 4 },
