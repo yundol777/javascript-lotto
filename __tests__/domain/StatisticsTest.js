@@ -1,7 +1,7 @@
 import { calculateProfitRate } from "../../src/services/CalculateProfitRate";
 
-describe("수익률 계산이 일치해야 한다.", () => {
-  test("수익률 계산이 일치해야 한다.", () => {
+describe("수익률을 계산한다.", () => {
+  test("로또 결과 데이터와 구매 금액을 입력하면 수익률이 계산된다.", () => {
     const resultData = [
       { matchCount: 3, money: 5000, requireBonus: false, count: 1 },
       { matchCount: 4, money: 50000, requireBonus: false, count: 0 },

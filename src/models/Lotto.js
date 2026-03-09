@@ -27,7 +27,8 @@ class Lotto {
   }
 
   getNumbers() {
-    return this.#numbers;
+    const numbers = [...this.#numbers];
+    return numbers;
   }
 }
 

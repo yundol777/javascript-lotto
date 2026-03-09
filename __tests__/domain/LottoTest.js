@@ -1,5 +1,5 @@
 import Lotto from "../../src/models/Lotto.js";
-import { resultAggregator } from "../../src/services/ResultAggregator.js";
+import { resultCalculator } from "../../src/services/resultCalculator.js";
 
 const AGGREGATION_TEST_CASES = [
   { desc: "6개 번호 일치 1등", result: { matchCount: 6, hasBonus: false }, expectedIndex: 4 },
@@ -10,10 +10,10 @@ const AGGREGATION_TEST_CASES = [
   { desc: "2개 이하 번호 일치 낙첨", result: { matchCount: 2, hasBonus: false }, expectAllZero: true },
 ];
 
-describe("로또와 당첨 번호를 비교한다.", () => {
+describe("로또 결과를 집계한다.", () => {
   AGGREGATION_TEST_CASES.forEach(({ desc, result, expectedIndex, expectAllZero }) => {
     test(desc, () => {
-      const data = resultAggregator([result]);
+      const data = resultCalculator([result]);
       if (expectAllZero) {
         expect(data.every((r) => r.count === 0)).toBe(true);
       } else {
@@ -23,7 +23,7 @@ describe("로또와 당첨 번호를 비교한다.", () => {
   });
 });
 
-describe("로또 번호가 오름차순으로 정렬된다.", () => {
+describe("로또 번호를 정렬한다.", () => {
   test("로또 번호가 오름차순으로 정렬된다.", () => {
     //출력: 오름차순으로 정렬된 로또 번호 6개
     const UNSORTED_ARRAY = [8, 3, 5, 1, 6, 2];

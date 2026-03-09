@@ -31,10 +31,10 @@ class WinningLottoManager extends Lotto {
     }
   }
 
-  compareWithWinningLotto(lottoNumbers) {
+  compareWithWinningLotto(lottoTicket) {
     const winningLottos = this.#winningLottos;
-    const matchCount = winningLottos.filter((number) => lottoNumbers.includes(number)).length;
-    const hasBonus = lottoNumbers.includes(this.#bonusNumber);
+    const matchCount = winningLottos.filter((number) => lottoTicket.includes(number)).length;
+    const hasBonus = lottoTicket.includes(this.#bonusNumber);
 
     return {
       matchCount,
