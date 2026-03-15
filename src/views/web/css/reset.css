@@ -130,3 +130,15 @@ table {
 div {
   box-sizing: border-box;
 }
+input {
+  border: none;
+  outline: none;
+}
+button {
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}

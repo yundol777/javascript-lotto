@@ -1,3 +1,5 @@
+/* 레이아웃 */
+
 html,
 body {
   height: 100%;
@@ -26,22 +28,23 @@ body {
   padding: 64px 10px;
   flex: 1;
   background-color: var(--lotto-greyscale-2);
+  overflow: hidden;
 }
 
 .container {
-  width: 400px;
+  width: 380px;
   height: 100%;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   background-color: var(--lotto-greyscale-1);
   border: 1px solid var(--lotto-greyscale-3);
 }
 
 .container__title {
-  margin-top: 8px;
+  margin: 8px 0;
   color: var(--lotto-greyscale-5);
   font: var(--text-title);
   text-align: center;
