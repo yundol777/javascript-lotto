@@ -16,7 +16,7 @@ class LottosOutputView {
             (lotto) => `
               <li class="lottos__item">
                 <p class="lottos__item-icon">🎟️</p>
-                <p class="lottos__item-numbers">${lotto.join(", ")}</p>
+                <p class="lottos__item-numbers">${lotto}</p>
               </li>
             `,
           )

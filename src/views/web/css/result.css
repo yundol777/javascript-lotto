@@ -1,7 +1,7 @@
 /* 결과 출력 섹션 */
 
 .result {
-  display: block;
+  display: none;
 }
 
 .result__background {

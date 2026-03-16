@@ -57,7 +57,6 @@ class ResultOutputView {
             </div>
           </div>`;
 
-    this.#close();
     this.#addEventListener();
   }
 
@@ -66,7 +65,10 @@ class ResultOutputView {
     const restartButton = this.#section.querySelector(".result__restart-button");
 
     closeButton.addEventListener("click", () => this.#close());
-    restartButton.addEventListener("click", () => this.#handler());
+    restartButton.addEventListener("click", () => {
+      this.#close();
+      this.#handler();
+    });
   }
 
   #close() {

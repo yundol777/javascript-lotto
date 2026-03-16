@@ -2,7 +2,7 @@ import Purchase from "../../models/Purchase";
 import WinningLottoManager from "../../models/winningLottoManager";
 import LottoMachine from "../../services/LottoMachine";
 import LottoResult from "../../services/LottoResult";
-import LottosOutputView from "../../views/web/js/LottosOuputView";
+import LottosOutputView from "../../views/web/js/LottosOutputView";
 import PurchaseInputView from "../../views/web/js/PurchaseInputView";
 import ResultOutputView from "../../views/web/js/ResultOutputView";
 import WinningInputView from "../../views/web/js/WinningInputView";
@@ -38,7 +38,7 @@ class MainController {
       const lottoMachine = new LottoMachine(this.#lottoTicketCount);
       this.#lottoTickets = lottoMachine.getLottoTickets();
 
-      this.#lottosOutputView.renderLottos(this.#lottoTickets);
+      this.#lottosOutputView.renderLottos(this.#formatLottoTickets());
       this.#winningInputView.show();
     } catch (error) {
       alert(error.message);
@@ -62,7 +62,12 @@ class MainController {
   #handleRestartButton() {
     this.#lottoTickets = null;
     this.#lottoTicketCount = null;
+    this.#winningInputView.hide();
     this.run();
+  }
+
+  #formatLottoTickets() {
+    return this.#lottoTickets.map((lotto) => lotto.join(", "));
   }
 }
 

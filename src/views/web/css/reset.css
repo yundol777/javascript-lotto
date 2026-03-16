@@ -135,10 +135,8 @@ input {
   outline: none;
 }
 button {
-  button {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-  }
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }

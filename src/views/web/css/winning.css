@@ -1,5 +1,9 @@
 /* 당첨 번호 입력 섹션 */
 
+.winning {
+  display: none;
+}
+
 .winning__form {
   display: flex;
   flex-direction: column;

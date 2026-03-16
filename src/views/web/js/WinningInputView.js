@@ -12,8 +12,8 @@ class WinningInputView {
     this.#section.innerHTML = `<form class="winning__form">
             <p class="winning__title">지난 주 당첨번호 6개와 보너스 번호 1개를 입력해주세요.</p>
             <div class="winning__input-group">
-              <div class="winning__lotto">
-                <p class="winning__input-title">당첨 번호</p>
+              <fieldset class="winning__lotto">
+                <legend class="winning__input-title">당첨 번호</legend>
                 <div class="winning__lotto-inputs">
                   <input class="winning__input" type="text" inputmode="numeric" maxlength="2" />
                   <input class="winning__input" type="text" inputmode="numeric" maxlength="2" />
@@ -22,18 +22,17 @@ class WinningInputView {
                   <input class="winning__input" type="text" inputmode="numeric" maxlength="2" />
                   <input class="winning__input" type="text" inputmode="numeric" maxlength="2" />
                 </div>
-              </div>
-              <div class="winning__bonus">
-                <p class="winning__input-title">보너스 번호</p>
+              </fieldset>
+              <fieldset class="winning__bonus">
+                <legend class="winning__input-title">보너스 번호</legend>
                 <div class="winning__bonus-input">
                   <input class="winning__input" type="text" inputmode="numeric" maxlength="2" />
                 </div>
-              </div>
+              </fieldset>
             </div>
-            <button class="winning__button">결과 확인하기</button>
+            <button type="submit" class="winning__button">결과 확인하기</button>
           </form>`;
 
-    this.#hide();
     this.#addEventListener(this.#section);
   }
 
@@ -57,7 +56,7 @@ class WinningInputView {
     this.#section.style.display = "block";
   }
 
-  #hide() {
+  hide() {
     this.#section.style.display = "none";
   }
 }
