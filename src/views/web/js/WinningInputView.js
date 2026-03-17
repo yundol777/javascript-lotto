@@ -42,13 +42,10 @@ class WinningInputView {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const lottoInputs = section.querySelectorAll(".winning__lotto-inputs input");
-      const bonusInput = section.querySelector(".winning__bonus-input input");
+      const winningLottoInput = section.querySelectorAll(".winning__lotto-inputs input");
+      const bonusNumberInput = section.querySelector(".winning__bonus-input input");
 
-      const winningNumbers = [...lottoInputs].map((i) => Number(i.value)).join(",");
-      const bonusNumber = Number(bonusInput.value);
-
-      this.#handler(winningNumbers, bonusNumber);
+      this.#handler(winningLottoInput, bonusNumberInput);
     });
   }
 

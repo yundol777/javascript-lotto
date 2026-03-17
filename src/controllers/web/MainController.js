@@ -47,8 +47,11 @@ class MainController {
 
   #handleResultButton(winningLottoInput, bonusNumberInput) {
     try {
-      const lottoManager = new WinningLottoManager(winningLottoInput);
-      lottoManager.setBonusNumber(bonusNumberInput);
+      const winningNumbers = [...winningLottoInput].map((i) => Number(i.value)).join(",");
+      const bonusNumber = Number(bonusNumberInput.value);
+
+      const lottoManager = new WinningLottoManager(winningNumbers);
+      lottoManager.setBonusNumber(bonusNumber);
 
       const lottoResult = new LottoResult(lottoManager, this.#lottoTickets);
       const { resultData, profitRate } = lottoResult.getResult(this.#lottoTicketCount);
